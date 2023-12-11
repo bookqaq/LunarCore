@@ -63,6 +63,7 @@ tmp/
 /logs
 /proto
 /plugins
+src/main/java/emu/lunarcore/proto
 
 # Lunar Core compiled
 /*.jar
@@ -75,3 +76,7 @@ config.json
 *.exe
 BuildConfig.java
 Test.java
+
+# bookqaq: all certificates
+reverse_proxy/*.pem
+scripts/*.pem
