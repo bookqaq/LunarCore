@@ -1,5 +1,6 @@
 package emu.lunarcore;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -22,6 +23,7 @@ public class Config {
     public GameServerConfig gameServer = new GameServerConfig(23301);
     
     public ServerOptions serverOptions = new ServerOptions();
+    public ServerTime serverTime = new ServerTime();
     public ServerRates serverRates = new ServerRates();
     public LogOptions logOptions = new LogOptions();
     public DownloadData downloadData = new DownloadData();
@@ -98,8 +100,8 @@ public class Config {
     @Getter
     public static class GameServerConfig extends ServerConfig {
         public String id = "lunar_rail_test";
-        public String name = "Test";
-        public String description = "Test Server";
+        public String name = "Lunar Core";
+        public String description = "A LunarCore server";
         public int kcpInterval = 40;
 
         public GameServerConfig(int port) {
@@ -107,10 +109,17 @@ public class Config {
         }
     }
     
+    @Getter 
+    public static class ServerTime {
+        public boolean spoofTime = false;
+        public Date spoofDate = new Date(1705276800000L); // January 15, 2024 12:00:00 AM (GMT)
+    }
+    
     @Getter
     public static class ServerOptions {
         public boolean autoCreateAccount = true;
         public int sceneMaxEntites = 500;
+        public int maxCustomRelicLevel = 15; // Maximum level of a relic that the player can create with the /give command
         public boolean unlockAllChallenges = true;
         public boolean spendStamina = true;
         public int staminaRecoveryRate = 5 * 60;

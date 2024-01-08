@@ -7,7 +7,6 @@ import com.google.gson.annotations.SerializedName;
 
 import emu.lunarcore.game.enums.PropState;
 import emu.lunarcore.game.scene.triggers.TriggerOpenTreasureWhenMonsterDie;
-import emu.lunarcore.game.scene.triggers.TriggerPuzzleCompassWayPointController;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
@@ -72,10 +71,10 @@ public class FloorInfo {
                     // Hacky way to setup prop triggers
                     if (json.contains("Maze_GroupProp_OpenTreasure_WhenMonsterDie")) {
                         prop.setTrigger(new TriggerOpenTreasureWhenMonsterDie(group.getId()));
-                    } else if (json.contains("Maze_Chap02_X201_Event_PuzzleCompass_WayPoint_Controller_01")) {
-                        prop.setTrigger(new TriggerPuzzleCompassWayPointController(prop.getSharedValueByKey("PuzzleCompass_Prop"), prop.getSharedValueByKey("PuzzleChest_Prop")));
                     }
                     
+                    // Clear for garbage collection
+                    prop.setValueSource(null);
                     prop.setInitLevelGraph(null);
                 }
             }
